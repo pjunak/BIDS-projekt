@@ -166,7 +166,7 @@ def read_shp(path: Path, layer: str) -> list[dict]:
         codepage = zf.read(names[f"{layer}.cpg"]).decode("ascii").strip() if f"{layer}.cpg" in names else "utf-8"
         rows = _read_dbf(zf.read(names[f"{layer}.dbf"]), f"cp{codepage}" if codepage.isdigit() else codepage)
         shapes = _read_shp_polygons(zf.read(names[f"{layer}.shp"]))
-    return [dict(row, polygons=polygons) for row, polygons in zip(rows, shapes)]
+    return [dict(row, polygons=polygons) for row, polygons in zip(rows, shapes, strict=True)]
 
 
 # ---- download + extract ------------------------------------------------------------------------
