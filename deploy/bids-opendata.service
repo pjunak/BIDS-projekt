@@ -1,0 +1,13 @@
+[Unit]
+Description=BIDS: ČSÚ, MPSV, Policie ČR and RÚIAN open-data downloads
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+# Adjust to where the repository is cloned.
+WorkingDirectory=%h/BIDS-projekt
+ExecStart=%h/.local/bin/uv run bids-scrape opendata
+# The first run backfills ~1 GB (all months since 2013/2014); later runs take a minute.
+TimeoutStartSec=3h
+Nice=10

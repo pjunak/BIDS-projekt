@@ -1,0 +1,36 @@
+# Python, uv and tool caches (uv.lock IS committed)
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# collected data, logs and local config never go to git
+data/
+config.toml
+.env
+*.log
+
+# temporary / partial files the collectors write while downloading (normally inside data/)
+*.tmp
+*.part
+_tmp/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.gpkg
+
+# editors, OS, local Claude settings
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+.claude/settings.local.json

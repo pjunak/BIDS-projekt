@@ -1,0 +1,13 @@
+[Unit]
+Description=BIDS: Sreality listings scan + new details
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+# Adjust to where the repository is cloned.
+WorkingDirectory=%h/BIDS-projekt
+ExecStart=%h/.local/bin/uv run bids-scrape sreality
+# The first runs download up to 1 500 details at ~4 s each.
+TimeoutStartSec=4h
+Nice=10

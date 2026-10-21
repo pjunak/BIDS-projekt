@@ -1,0 +1,38 @@
+# Copy to config.toml and adjust. Every option is optional; the values below are the defaults.
+
+# Where the SQLite database, raw downloads, exports and logs go (relative to this file).
+data_dir = "data"
+
+# Put an e-mail or URL here. It is sent in the User-Agent header so site operators can
+# contact you instead of just blocking an unknown client. Recommended.
+contact = ""
+
+[http]
+# Random pause between two requests, seconds. Keep it slow: ~100 search pages take ~7 minutes.
+min_delay = 2.5
+max_delay = 6.0
+# Longer break every N requests.
+long_pause_every = 150
+long_pause_min = 30.0
+long_pause_max = 90.0
+timeout = 60.0
+max_retries = 4
+# If a server answers 429 with Retry-After longer than this, the run stops instead of waiting.
+max_retry_after = 900.0
+
+[sreality]
+region_id = 14            # Jihomoravský kraj
+# [category_main_cb, category_type_cb]: main 1=byty 2=domy, type 1=prodej 2=pronájem
+categories = [[1, 1], [1, 2], [2, 1], [2, 2]]
+page_size = 60
+# The first run finds ~6 000 listings without detail; this spreads their download over ~4 days.
+max_details_per_run = 1500
+# Re-download details older than N days (0 = never).
+detail_refresh_days = 0
+min_completeness = 0.97
+
+[ping]
+# Optional monitoring: a free https://healthchecks.io check per job e-mails you when a run fails
+# or does not happen at all. Paste the ping URLs here (e.g. https://hc-ping.com/<uuid>).
+sreality = ""
+opendata = ""
